@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 
 // Ruta GET
 app.get('/', (req, res) => {
-    res.json({ message: `Hola, ${req.subdomain}!` });
+    res.json({ message: `El subdominio es: "${req.subdomain}"` });
 });
 
 // Iniciar servidor
