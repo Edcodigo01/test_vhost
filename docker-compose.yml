@@ -1,18 +1,20 @@
-version: '3.8'
+version: '3'
 
 services:
-  app:
-    build: .
-    container_name: node-vhost-app
-    ports:
-      - "3000:3000"
+  nginx:
+    image: nginx:latest
+    container_name: nginx
     volumes:
-      - .:/usr/src/app
-    environment:
-      - NODE_ENV=production
-    networks:
-      - node-network
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Asumiendo que tienes un archivo de configuración de Nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - node_app
 
-networks:
-  node-network:
-    driver: bridge
+  node_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_app
+    expose:
+      - "3000"  # Este puerto solo es visible dentro de la red de Docker
