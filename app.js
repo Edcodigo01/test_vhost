@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 80;
 
 // Middleware para capturar el subdominio
 // app.use((req, res, next) => {
