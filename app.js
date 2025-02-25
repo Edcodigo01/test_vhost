@@ -12,7 +12,7 @@ const port = 80;
 
 // Ruta GET
 app.get('/', (req, res) => {
-    res.json({ message: `prueba` });
+    res.json({ message: `prueba ${port}` });
 
     // res.json({ message: `El subdominio es: "${req.subdomain}"` });
 });
